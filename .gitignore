@@ -6,6 +6,7 @@ build/
 !**/src/test/**/build/
 
 application.properties
+messages.properties
 docker-compose.yml
 
 ### STS ###

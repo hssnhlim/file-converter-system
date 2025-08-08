@@ -21,9 +21,9 @@ import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -33,6 +33,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Table(name = "users")
 public class User {
 
@@ -54,7 +55,6 @@ public class User {
     @Column(name = "password", nullable = false)
     @NotEmpty
     @Size(min = 8, message = "Password must be at least 8 characters long!")
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
     private String password;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
@@ -64,6 +64,7 @@ public class User {
     )
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
+    @Builder.Default
     private Set<Role> roles = new HashSet<>();
 
     @Column(name = "created_at", updatable = false, nullable = false)
@@ -87,4 +88,5 @@ public class User {
     private void onUpdate() {
         this.updatedAt = LocalDateTime.now();
     }
+
 }

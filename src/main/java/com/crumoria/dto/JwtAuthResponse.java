@@ -2,19 +2,15 @@ package com.crumoria.dto;
 
 import java.util.Set;
 
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Builder
 public class JwtAuthResponse {
 
-    private String accessToken;
-    private String tokentype = "Bearer ";
-    private String username;
-    private Set<String> roles;
+    private final String accessToken;
+    private final String tokentype = "Bearer ";
+    private final String username;
+    private final Set<String> roles;
 }
