@@ -44,7 +44,6 @@ public class User {
     @Column(name = "username", nullable = false, unique = true)
     @NotEmpty
     @Size(min = 3, message = "Username must be at least 3 characters long!")
-    
     private String username;
 
     @Column(name = "email", nullable = false, unique = true)
