@@ -1,0 +1,29 @@
+# File Converter Configuration
+file:
+  converter:
+    # Maximum file size in bytes (100MB default)
+    max-file-size: 104857600
+    
+    # Storage path for converted files
+    storage:
+      path: /tmp/converted-files
+    
+    # Supported file formats
+    supported-formats: pdf,docx,txt,jpg,png,gif,bmp,mp4,avi,mov
+    
+    # Async processing configuration
+    async:
+      core-pool-size: 2
+      max-pool-size: 5
+      queue-capacity: 100
+    
+    # File cleanup configuration (in hours)
+    cleanup:
+      retention-hours: 24
+      enabled: true
+
+# Logging for file converter
+logging:
+  level:
+    com.crumoria.service.FileConverterService: INFO
+    com.crumoria.controller.FileConverterController: INFO
