@@ -15,10 +15,10 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import com.crumoria.dto.JwtAuthResponse;
-import com.crumoria.dto.LoginDto;
-import com.crumoria.dto.RegisterDto;
-import com.crumoria.dto.UserDto;
+import com.crumoria.dto.auth.JwtAuthResponse;
+import com.crumoria.dto.auth.LoginDto;
+import com.crumoria.dto.auth.RegisterDto;
+import com.crumoria.dto.auth.UserDto;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Testcontainers

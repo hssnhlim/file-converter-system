@@ -20,9 +20,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 
-import com.crumoria.dto.LoginDto;
-import com.crumoria.dto.RegisterDto;
-import com.crumoria.dto.UserDto;
 import com.crumoria.entity.Role;
 import com.crumoria.entity.User;
 import com.crumoria.exception.BusinessException;
@@ -30,7 +27,10 @@ import com.crumoria.repository.UserRepository;
 import com.crumoria.security.JwtTokenProvider;
 import com.crumoria.service.PasswordPolicyService;
 import com.crumoria.exception.ErrorCode;
-import com.crumoria.dto.JwtAuthResponse;
+import com.crumoria.dto.auth.JwtAuthResponse;
+import com.crumoria.dto.auth.LoginDto;
+import com.crumoria.dto.auth.RegisterDto;
+import com.crumoria.dto.auth.UserDto;
 
 @ExtendWith(MockitoExtension.class)
 public class AuthServiceTest {

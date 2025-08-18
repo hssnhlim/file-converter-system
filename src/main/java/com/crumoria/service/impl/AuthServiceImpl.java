@@ -10,10 +10,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.crumoria.dto.JwtAuthResponse;
-import com.crumoria.dto.LoginDto;
-import com.crumoria.dto.RegisterDto;
-import com.crumoria.dto.UserDto;
+import com.crumoria.dto.auth.JwtAuthResponse;
+import com.crumoria.dto.auth.LoginDto;
+import com.crumoria.dto.auth.RegisterDto;
+import com.crumoria.dto.auth.UserDto;
 import com.crumoria.entity.Role;
 import com.crumoria.entity.User;
 import com.crumoria.exception.BusinessException;
@@ -44,6 +44,10 @@ public class AuthServiceImpl implements AuthService {
     public JwtAuthResponse login(LoginDto loginDto) {
 
         log.info("Login attempt for {}", loginDto.usernameOrEmail());
+
+        User user = userRepository.findByUsernameOrEmail(loginDto.usernameOrEmail())
+                .orElseThrow(() -> new BusinessException(ErrorCode.USER_NOT_FOUND, "User not found"));
+
         Authentication authentication = authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(
                 loginDto.usernameOrEmail(), 
@@ -51,8 +55,6 @@ public class AuthServiceImpl implements AuthService {
         );
 
         String token = jwtTokenProvider.generateToken(authentication);
-        User user = userRepository.findByUsernameOrEmail(loginDto.usernameOrEmail())
-                .orElseThrow(() -> new BusinessException(ErrorCode.USER_NOT_FOUND, "User not found"));
 
         return JwtAuthResponse.builder()
                 .accessToken(token)

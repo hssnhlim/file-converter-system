@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.crumoria.dto.JwtAuthResponse;
-import com.crumoria.dto.RegisterDto;
-import com.crumoria.dto.LoginDto;
-import com.crumoria.dto.UserDto;
+import com.crumoria.dto.auth.JwtAuthResponse;
+import com.crumoria.dto.auth.LoginDto;
+import com.crumoria.dto.auth.RegisterDto;
+import com.crumoria.dto.auth.UserDto;
 import com.crumoria.service.AuthService;
 
 import io.swagger.v3.oas.annotations.Operation;
