@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import jakarta.servlet.http.HttpServletRequest;
 
 @RestControllerAdvice
-public class ApiExceptionHandler {
+public class GlobalExceptionHandler {
 
     private final MessageSource messageSource;
 
-    public ApiExceptionHandler(MessageSource messageSource) {
+    public GlobalExceptionHandler(MessageSource messageSource) {
         this.messageSource = messageSource;
     }
 
